@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark Theme (Default) */
+  body.dark {
+    background: linear-gradient(135deg, #0D0D0D 0%, #1C1C1C 100%);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Light Theme */
+  body.light {
+    background: linear-gradient(135deg, #FAFAFA 0%, #EAEAEA 100%);
+    color: rgba(26, 26, 26, 0.9);
+  }
+
+  /* Subtle texture overlay with chalk particles feel */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(232, 226, 208, 0.01) 2px,
+        rgba(232, 226, 208, 0.01) 4px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* Professional card styling */
+  .idea-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .idea-card:hover {
+    @apply border-white/20;
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.4),
+      0 4px 6px -2px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Trending card glow */
+  .trending-glow {
+    position: relative;
+  }
+
+  .trending-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(91, 159, 237, 0.4), rgba(99, 102, 241, 0.4), rgba(91, 159, 237, 0.4));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    animation: rotate-gradient 3s linear infinite;
+  }
+
+  @keyframes rotate-gradient {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  /* Soft grid background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glass morphism with inner shadow */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      inset 0 0 12px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Handwriting text */
+  .handwriting {
+    @apply font-handwriting;
+    letter-spacing: 0.02em;
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* React Flow custom styles - Miro-style nodes */
+.react-flow__node {
+  @apply bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-2xl px-6 py-4 border-2 border-white/30 shadow-xl;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.react-flow__node:hover {
+  @apply border-white/50 shadow-2xl scale-105;
+}
+
+.react-flow__node-input {
+  @apply bg-gradient-to-br from-blue-500/30 to-blue-600/20 border-blue-400/70;
+}
+
+.react-flow__node-output {
+  @apply bg-gradient-to-br from-green-500/30 to-green-600/20 border-green-400/70;
+}
+
+.react-flow__node-default {
+  @apply bg-gradient-to-br from-purple-500/20 to-purple-600/10 border-purple-400/50;
+}
+
+.react-flow__edge-path {
+  stroke: rgba(167, 139, 250, 0.6);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px rgba(167, 139, 250, 0.4));
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* Smooth scroll for chat */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-white/5 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/30;
+}
+
+.react-flow__edge-path {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+}
+
+.react-flow__handle {
+  @apply bg-white/50 border-2 border-white;
+}
