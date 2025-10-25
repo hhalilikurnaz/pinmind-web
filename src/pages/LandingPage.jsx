@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useCinematic } from '../context/CinematicContext';
 import { useAudioContext } from '../context/AudioContext';
 import { useScrollSync } from '../hooks/useScrollSync';
+import { useScrollEvents } from '../hooks/useScrollEvents'; // Moved scroll event logic
 import { useCameraMotion } from '../hooks/useCameraMotion';
 import { useFocusDepth } from '../hooks/useFocusDepth';
 import { useCinematicAudio, useScrollCinematicAudio } from '../hooks/useCinematicAudio';
@@ -15,6 +16,7 @@ import LightBulbScene from '../components/LightBulbScene';
 import AudioControl from '../components/AudioControl';
 import { audioConfig, scrollAudioThresholds } from '../utils/audioConfig';
 import CinematicDebugOverlay from '../debug/CinematicDebugOverlay';
+import { playLandingAnimations } from '../animations/landingAnimations'; // Centralized animation logic
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -49,24 +51,20 @@ const LandingPage = () => {
   // 🎯 Depth & Focus Layer
   const depth = useFocusDepth(sync);
 
+  // 📜 Scroll Events - Header background & button visibility (Moved to useScrollEvents hook)
+  const { scrolled, scrollProgress } = useScrollEvents(scrollEnabled);
+
+  // 🎬 Animation States - Computed from scroll progress (Moved to landingAnimations.js)
+  const [animationStates, setAnimationStates] = useState(null);
+
   // Update global scroll progress for cinematic coordination
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', (latest) => {
       updateScrollProgress(latest);
       
-      // 🐛 DEBUG: Log scroll ranges and active scene (throttled for performance)
-      if (process.env.NODE_ENV === 'development') {
-        const section = latest < 0.22 ? 'Idea' :
-                       latest < 0.45 ? 'Team' :
-                       latest < 0.72 ? 'Prototype' : 
-                       latest < 0.96 ? 'Vision' : 'Footer';
-        
-        // Throttle logs to every 250ms
-        if (!window._lastLogTime || Date.now() - window._lastLogTime > 250) {
-          console.log(`[Cinematic] Scene: ${section}, Scroll: ${latest.toFixed(3)}`);
-          window._lastLogTime = Date.now();
-        }
-      }
+      // 🎬 Calculate animation states on scroll (replaces inline debug logic)
+      const states = playLandingAnimations(latest);
+      setAnimationStates(states);
     });
     return () => unsubscribe();
   }, [scrollYProgress, updateScrollProgress]);
@@ -85,8 +83,7 @@ const LandingPage = () => {
   const [activeAnalysisCard, setActiveAnalysisCard] = useState(0);
   const [activeTeamMember, setActiveTeamMember] = useState(0);
   const [prototypeDrawing, setPrototypeDrawing] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // Removed: scrolled and scrollProgress state - now handled by useScrollEvents hook
 
   // 🎬 Auto-play intro sequence - managed by CinematicContext
   useEffect(() => {
@@ -117,18 +114,7 @@ const LandingPage = () => {
     };
   }, [updateIntroStep, completeIntro]);
 
-  // Track scroll for header and button fade
-  useEffect(() => {
-    if (!scrollEnabled) return;
-    
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 100);
-      setScrollProgress(scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollEnabled]);
+  // Removed: Manual scroll event listener - now handled by useScrollEvents hook
 
   // Sequential analysis cards
   useEffect(() => {
