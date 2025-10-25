@@ -21,9 +21,9 @@ export const useScrollSync = (scrollYProgress) => {
   // 🎯 CINEMATIC TIMELINE - Perfect alignment with smooth overlaps
   const ranges = {
     idea: { start: 0.0, end: 0.22 },
-    team: { start: 0.22, end: 0.42 },       // Team window: [0.22, 0.42]
-    prototype: { start: 0.42, end: 0.68 },  // Prototype window: [0.42, 0.68]
-    vision: { start: 0.68, end: 0.92 }      // Vision window: [0.68, 0.92]
+    team: { start: 0.22, end: 0.45 },       // Team window: [0.22, 0.45]
+    prototype: { start: 0.45, end: 0.72 },  // Prototype window: [0.45, 0.72]
+    vision: { start: 0.72, end: 0.96 }      // Vision window: [0.72, 0.96]
   };
   
   // 🎬 DEPTH BALANCER - Cinematic focus pull system

@@ -37,8 +37,8 @@ export const SCENES = {
   // Team Formation Scene
   team: {
     start: 0.22,
-    end: 0.42,
-    duration: 0.20,
+    end: 0.45,
+    duration: 0.23,
     name: 'Team',
     description: 'Character formation animation',
     overlap: 0.02 // 2% overlap with Prototype for fade
@@ -46,9 +46,9 @@ export const SCENES = {
   
   // Prototype Creation Scene
   prototype: {
-    start: 0.42,
-    end: 0.68,
-    duration: 0.26,
+    start: 0.45,
+    end: 0.72,
+    duration: 0.27,
     name: 'Prototype',
     description: 'Design sketch + light bloom',
     overlap: 0.02 // 2% overlap with Vision for fade
@@ -56,8 +56,8 @@ export const SCENES = {
   
   // Vision/Lightbulb Scene
   vision: {
-    start: 0.68,
-    end: 0.92,
+    start: 0.72,
+    end: 0.96,
     duration: 0.24,
     name: 'Vision',
     description: 'Lightbulb moment animation'
@@ -65,9 +65,9 @@ export const SCENES = {
   
   // FAQ/Footer Scene
   faq: {
-    start: 0.92,
+    start: 0.96,
     end: 1.0,
-    duration: 0.08,
+    duration: 0.04,
     name: 'FAQ',
     description: 'FAQ accordion + footer'
   }

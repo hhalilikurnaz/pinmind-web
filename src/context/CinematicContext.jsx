@@ -29,12 +29,12 @@ export const cinematicTimeline = {
   ideaStart: 0.0,
   ideaEnd: 0.22,        // Idea ends at 0.22
   teamStart: 0.22,      // Team starts at 0.22 (seamless handoff)
-  teamEnd: 0.42,        // Team ends at 0.42
-  prototypeStart: 0.42, // Prototype starts at 0.42 (seamless handoff)
-  prototypeEnd: 0.68,   // Prototype ends at 0.68
-  visionStart: 0.68,    // Vision starts at 0.68 (seamless handoff)
-  visionEnd: 0.92,      // Vision ends at 0.92
-  faqStart: 0.92,       // FAQ starts at 0.92
+  teamEnd: 0.45,        // Team ends at 0.45
+  prototypeStart: 0.45, // Prototype starts at 0.45 (seamless handoff)
+  prototypeEnd: 0.72,   // Prototype ends at 0.72
+  visionStart: 0.72,    // Vision starts at 0.72 (seamless handoff)
+  visionEnd: 0.96,      // Vision ends at 0.96
+  faqStart: 0.96,       // FAQ starts at 0.96
   faqEnd: 1.0,          // FAQ ends at 1.0
   
   // Transition overlap for smooth cross-fades (2-3% overlap)

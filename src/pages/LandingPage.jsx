@@ -57,9 +57,9 @@ const LandingPage = () => {
       // 🐛 DEBUG: Log scroll ranges and active scene (throttled for performance)
       if (process.env.NODE_ENV === 'development') {
         const section = latest < 0.22 ? 'Idea' :
-                       latest < 0.42 ? 'Team' :
-                       latest < 0.68 ? 'Prototype' : 
-                       latest < 0.92 ? 'Vision' : 'Footer';
+                       latest < 0.45 ? 'Team' :
+                       latest < 0.72 ? 'Prototype' : 
+                       latest < 0.96 ? 'Vision' : 'Footer';
         
         // Throttle logs to every 250ms
         if (!window._lastLogTime || Date.now() - window._lastLogTime > 250) {
@@ -838,7 +838,7 @@ const LandingPage = () => {
         </div>
       </motion.section>
 
-      {/* 3️⃣ PROTOTYPE CREATION - HANDOFF [0.48 - 0.72] */}
+      {/* 3️⃣ PROTOTYPE CREATION - HANDOFF [0.45 - 0.72] */}
       <motion.section 
         ref={prototypeRef} 
         className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
@@ -1083,7 +1083,7 @@ const LandingPage = () => {
         )}
       </motion.section>
 
-      {/* 4️⃣ TEAM FORMATION - ISOLATED SCENE [0.22 - 0.44] */}
+      {/* 4️⃣ TEAM FORMATION - ISOLATED SCENE [0.22 - 0.45] */}
       <motion.div
         className="relative"
         style={{
