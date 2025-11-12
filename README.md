@@ -1,6 +1,7 @@
 🚀 PinMind — AI-Powered Idea Journey Platform
 
-Status: 🧠 In Development | Tech Stack: MERN + AI Integration (Gemini API)
+Status: 🧠 In Development
+Tech Stack: MERN + AI Integration (Gemini API)
 
 🌟 Overview
 
@@ -26,6 +27,7 @@ Technical feasibility
 Market relevance
 
 Emotional impact
+
 The analysis is displayed dynamically and stored for later improvement.
 
 🧰 Virtual Workspace
@@ -49,8 +51,6 @@ Top community ideas are showcased, fostering innovation and social creativity.
 
 🔮 Next Development Stages
 
-The upcoming milestones for PinMind include:
-
 🧩 Backend Integration: Node.js + MongoDB for authentication and data persistence.
 
 🤖 AI Enhancement: Advanced Gemini API integration for personalized context & prompt engineering.
@@ -62,34 +62,35 @@ The upcoming milestones for PinMind include:
 💬 Community Expansion: Threaded discussions, voting, and AI-moderated insights.
 
 ⚙️ Tech Stack
-Layer	Technology
-Frontend	React + Vite + TailwindCSS + Framer Motion + GSAP
-Backend (planned)	Node.js + Express + MongoDB
-AI Integration	Gemini API (context + prompt engineering)
-Visualization	React Three Fiber (future)
-Collaboration	Socket.io (real-time, future)
+
+Frontend: React + Vite + TailwindCSS + Framer Motion + GSAP
+Backend (planned): Node.js + Express + MongoDB
+AI Integration: Gemini API (context + prompt engineering)
+Visualization: React Three Fiber (future)
+Collaboration: Socket.io (real-time, future)
+
 🧭 Vision
 
 PinMind envisions a future where creativity meets intelligence — every idea gets the chance to grow, evolve, and connect through AI-driven assistance.
 This is not just a tool; it’s a living ecosystem for thinkers, builders, and dreamers.
 The project is actively evolving, with AI agents and intelligent workspaces being the next major step.
 
-👥 Contributors
-
-Sude Özübek — Founder & Lead Developer
-
-Halil İbrahim Kurnaz — AI Research Engineer
-
 🧩 Repository Structure
 pinmind-web/
 │
-├── public/                 # Static assets (images, icons, etc.)
+├── public/                 
+│   └── Static assets (images, icons, etc.)
+│
 ├── src/
-│   ├── components/         # Reusable React components
-│   ├── scenes/             # Cinematic sections (IdeaScene, CodeScene, etc.)
-│   ├── styles/             # Tailwind & animation layers
-│   ├── App.jsx             # Main entry point
-│   └── main.jsx            # Vite bootstrap
+│   ├── components/         
+│   │   └── Reusable React components
+│   ├── scenes/             
+│   │   └── Cinematic sections (IdeaScene, CodeScene, etc.)
+│   ├── styles/             
+│   │   └── Tailwind & animation layers
+│   ├── App.jsx             
+│   └── main.jsx            
+│
 ├── package.json
 └── README.md
 
